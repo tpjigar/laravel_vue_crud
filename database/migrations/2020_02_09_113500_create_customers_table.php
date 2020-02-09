@@ -17,7 +17,7 @@ class CreateCustomersTable extends Migration
             $table->bigIncrements('id');
             $table->string('uniquecode',32);
             $table->string('name');
-            $table->string('username');
+            $table->string('username')->unique();;
             $table->timestamp('birthdate')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

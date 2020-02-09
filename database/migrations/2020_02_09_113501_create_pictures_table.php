@@ -15,13 +15,14 @@ class CreatePicturesTable extends Migration
     {
         Schema::create('pictures', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('uniquecode', 32);
+            $table->string('uniquecode', 32)->unique();
             $table->string('name');
             $table->unsignedBigInteger('customer_id')->nullable();
-            $table->foreign('customer_id')->references('uniquecode')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-        });
+         });
+
     }
 
     /**
@@ -32,5 +33,6 @@ class CreatePicturesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('pictures');
+        //$table->dropForeign('posts_user_id_foreign');
     }
 }

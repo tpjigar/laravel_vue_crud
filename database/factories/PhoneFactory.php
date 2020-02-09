@@ -20,7 +20,7 @@ use Carbon\Carbon;
 $factory->define(Phone::class, function (Faker $faker) {
     return [
         'uniquecode' => $faker->regexify('[A-Za-z0-9]{32}'),
-        'name' => $faker->randomDigit,
+        'name' => $faker->regexify('[0-9]{10}'),
         'customer_id' => random_int(1, 20)
     ];
 });

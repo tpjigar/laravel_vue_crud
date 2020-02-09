@@ -12,9 +12,9 @@ class CustomerAPIController extends Controller
 {
     public function index()
     {
-        return new CustomerCollection(Customer::paginate());
+        return new CustomerCollection(Customer::with(['emails','phones','pictures'])->paginate(10));
     }
- 
+
     public function show(Customer $customer)
     {
         return new CustomerResource($customer->load(['emails', 'phones', 'pictures']));
