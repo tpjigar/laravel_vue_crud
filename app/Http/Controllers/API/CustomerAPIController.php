@@ -12,7 +12,7 @@ class CustomerAPIController extends Controller
 {
     public function index()
     {
-        return new CustomerCollection(Customer::with(['emails','phones','pictures'])->paginate(10));
+        return new CustomerCollection(Customer::with(['emails','phones','pictures'])->paginate(5));
     }
 
     public function show(Customer $customer)
@@ -22,6 +22,8 @@ class CustomerAPIController extends Controller
 
     public function store(Request $request)
     {
+        //check duplicate entry for username
+
         return new CustomerResource(Customer::create($request->all()));
     }
 

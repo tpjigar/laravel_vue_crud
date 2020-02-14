@@ -10,4 +10,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class CustomerController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function index()
+    {
+        return view('customers.index');
+    }
+
+    public function vuesax_index()
+    {
+        return view('vuesax.index');
+    }
 }
